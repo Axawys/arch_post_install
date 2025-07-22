@@ -50,6 +50,27 @@ set_icon_theme() {
   fi
 }
 
+apply_kde_panel_config() {
+  echo "[+] Настройка панели KDE (профиль plasma)..."
+
+  mkdir -p "$HOME/.config"
+
+  SRC="$SCRIPT_DIR/arch_post_install_appletsrc"
+  DEST="$HOME/.config/plasma-org.kde.plasma.desktop-appletsrc"
+  BACKUP="$DEST.backup.$(date +%s)"
+
+  if [[ -f "$DEST" ]]; then
+    echo " - Создаю резервную копию: $BACKUP"
+    cp "$DEST" "$BACKUP"
+  fi
+
+  echo " - Копирую новый конфиг панели..."
+  cp -f "$SRC" "$DEST"
+
+  echo " - Перезапускаю Plasma Shell..."
+  kquitapp5 plasmashell && kstart5 plasmashell &
+}
+
 
 setup_zsh_and_konsole() {
   echo "[+] Настройка ZSH и Konsole..."
@@ -102,6 +123,7 @@ case $choice in
     setup_zsh_and_konsole
     install_yay_and_aur_packages
     install_amnezia
+    apply_kde_panel_config
     ;;
   2)
     echo "[=] Установка набора пакетов..."
