@@ -28,7 +28,7 @@ install_base_packages() {
   echo "[+] Установка пакетов через pacman..."
   sudo pacman -Syu --noconfirm
   sudo pacman -S --noconfirm steam kdenlive libreoffice-fresh thunderbird telegram-desktop \
-    obsidian audacity htop btop mc ktorrent krita spectacle obs-studio gwenview zsh
+    obsidian audacity htop btop mc ktorrent krita spectacle obs-studio gwenview zsh papirus-icon-theme kde-cli-tools
 }
 
 setup_fonts() {
