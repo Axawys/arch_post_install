@@ -37,6 +37,20 @@ setup_fonts() {
   cp "$SCRIPT_DIR/FiraCodeNerdFontMono-Regular.ttf" ~/.fonts/
 }
 
+set_icon_theme() {
+  echo "[+] Применение темы иконок Papirus-Dark..."
+
+  if command -v gsettings &> /dev/null; then
+    gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+  fi
+
+  if command -v kwriteconfig5 &> /dev/null; then
+    kwriteconfig5 --file kdeglobals --group Icons --key Theme Papirus-Dark
+    lookandfeeltool -a org.kde.breezedark.desktop 2>/dev/null || true
+  fi
+}
+
+
 setup_zsh_and_konsole() {
   echo "[+] Настройка ZSH и Konsole..."
 
@@ -84,6 +98,7 @@ case $choice in
     echo "[=] Полная настройка системы..."
     install_base_packages
     setup_fonts
+    set_icon_theme
     setup_zsh_and_konsole
     install_yay_and_aur_packages
     install_amnezia
@@ -91,6 +106,7 @@ case $choice in
   2)
     echo "[=] Установка набора пакетов..."
     install_base_packages
+    set_icon_theme
     setup_fonts
     install_yay_and_aur_packages
     ;;
