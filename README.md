@@ -1,3 +1,4 @@
 # arch_post_install
-This arch script automatically installs a minimal set of packages for a comfortable computer experience, including zsh, the zinit plugin manager, and all the configurations.
-<img width="2560" height="1440" alt="Снимок экрана_20250722_114723" src="https://github.com/user-attachments/assets/c375b391-2a51-4685-ab43-608e267f422c" />
+This arch script automatically installs a minimal set of packages for a comfortable computer experience, including zsh, the zinit plugin manager, p10k theme and all the configurations.
+
+<img width="2560" height="1440" alt="Снимок экрана_20250722_115053" src="https://github.com/user-attachments/assets/69694fbd-91ee-4d3a-9b16-e15848e9ab7b" />
